@@ -1,0 +1,129 @@
+#header {
+    height: 20%;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#content {
+    height: auto;
+    position: relative;
+}
+
+#plot{
+    width: 300px;
+    height: 50px;
+    padding: 20px;
+    right: 10px;
+    position: fixed;
+    font-size: 12px;
+
+}
+
+#graph{
+    width: 50%;
+    height: 75%;
+    left: 25%;
+    right: 25%;
+    position: fixed;
+    background-color: #fff;
+}
+
+#add-station{
+    width: 175px;
+    height: 50px;
+    padding: 20px;
+    left: 10px;
+    position: fixed;
+    font-size: 12px;
+
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+}
+
+#loginContainer {
+    width: 350px;
+    height: 100px;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin: -70px 0 0 -170px;
+}
+
+#regContainer {
+    width: 350px;
+    height: 100px;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin: -70px 0 0 -170px;
+}
+
+#contentContainer {
+    width: 350px;
+    height: 100px;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin: -70px 0 0 -170px;
+}
+
+#register {
+    width: 200px;
+    margin-left: 20px;
+}
+
+.left {
+    position: absolute;
+}
+
+.right {
+    position: absolute;
+    top: 37%;
+    right: 33%;
+    margin: -70px 0 0 -170px;
+}
+
+#email_modal{
+    display: none;
+}
+
+#login {
+    width: 200px;
+}
+
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+
+
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+    display: none;
+	z-index: 9999;
+	background: url(../img/load.gif) center no-repeat;
+}
+
+#schedule_link { background:none;border:none; font-weight: bold}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block addsrc %}
+    <script type="text/javascript" src="{% static "js/weathatix.js" %}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}
+{% block content %}
+
+    <div id ="plot">
+<form class="form-horizontal" id="plot_form" name="plot_form">
+  <fieldset>
+    <legend>Plot</legend>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Forecast Type</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="parameter" id="temp" value="Temperature" checked="">
+            Temperature
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="parameter" id="humidity" value="Humidity">
+            Humidity
+          </label>
+        </div>
+      </div>
+    </div>
+  <div class="form-group">
+      <label for="date" class="col-lg-2 control-label" >Start</label>
+      <div class="col-lg-10">
+      <input type="date" id ="start" name="start" min="{{ start }}" max="{{end}}">
+          </div>
+
+  </div>
+    <div class="form-group">
+      <label for="date" class="col-lg-2 control-label" >End</label>
+        <div class="col-lg-10">
+      <input type="date" id = "end" name="end" min="{{ start }}" max="{{end}}">
+            </div>
+
+  </div>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Stations</label>
+      <div class="col-lg-10">
+        <select class="form-control input-sm" id="stations" name="stations">
+            {% for station,station_code in station_list.items %}
+                <option value="{{ station_code }}">{{ station }} </option>
+            {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="button" class="btn btn-primary input-sm" id="plot_btn">Plot</button>
+          <br />
+           <button type="button" id="schedule_link">Schedule?</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+    </div>
+
+    <div id="graph">
+    </div>
+
+    <div id ="add-station">
+
+    <form class="form-horizontal">
+  <fieldset>
+    <legend>Stations</legend>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Country:</label>
+      <div class="col-lg-10">
+        <select class="form-control input-sm" id="country">
+        </select>
+      </div>
+    </div>
+          <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">City:</label>
+      <div class="col-lg-10">
+        <select class="form-control input-sm" id="city">
+        </select>
+      </div>
+    </div>
+
+      <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Station:</label>
+      <div class="col-lg-10">
+        <select class="form-control input-sm" id="station">
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="button" id="add_station" class="btn btn-primary input-sm">Add</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+    </div>
+    <div id="email_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Send updates to {{ user.email }}?</h4>
+      </div>
+      <div class="modal-body">
+        <label for="select" class="col-lg-2 control-label">Station</label>
+          <div >
+            <select class="form-control input-sm" id="schedule_station" name="schedule_station">
+                {% for station,station_code in station_list.items %}
+                    <option value="{{ station_code }}">{{ station }} </option>
+                {% endfor %}
+            </select>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal_close">Close</button>
+        <button type="button" class="btn btn-primary" id="schedule">Schedule</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

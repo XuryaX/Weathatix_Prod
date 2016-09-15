@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+{% load static %}
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}Weathatix</title>
+    <link rel="stylesheet" href="{% static "css/wathatix.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" media="screen">
+    <script type="text/javascript" src="{% static "js/jquery-2.1.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    {% block addsrc %}{% endblock %}
+</head>
+
+<body>
+
+{% include "header.html" %}
+
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+
+{% include "footer.html" %}
+
+
+      </div>
+
+
+
+   </body>
+<div class="se-pre-con" id="load"></div>
+
+</html>
