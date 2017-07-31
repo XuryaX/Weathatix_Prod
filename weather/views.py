@@ -6,6 +6,7 @@ from django.views.generic import View,TemplateView
 from models import WeatherStation,Subscriber
 from django.http.response import HttpResponse
 import datetime,json
+import tasks
 
 class WeatherView(TemplateView):
     """ View which would have Weather Data  """
@@ -50,11 +51,14 @@ class Subscribe(View):
         weather_station = WeatherStation.objects.get(id=station_id)
 
         subscriber_exists = Subscriber.objects.filter(user=request.user,station_id=station_id)
+
         if len(subscriber_exists):
+            tasks.send_update.delay(request.user.id)
             return HttpResponse("Registered")
 
         new_subscriber = Subscriber(user=request.user,station=weather_station)
         new_subscriber.save()
+        tasks.send_update.delay(request.user.id)
 
         return HttpResponse("Success!")
 

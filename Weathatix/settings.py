@@ -97,19 +97,37 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Weathatix.wsgi.application'
 
 
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
+
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'fkkvspaz',
+#         'USER': 'fkkvspaz',
+#         'PASSWORD': 'MwTWlQHScGtnG72qqHjOSqR_C8IrqlbZ',
+#         'HOST': 'elmer-01.db.elephantsql.com',
+#         'PORT': '',
+#     }
+# }
+'''
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fkkvspaz',
-        'USER': 'fkkvspaz',
-        'PASSWORD': 'MwTWlQHScGtnG72qqHjOSqR_C8IrqlbZ',
-        'HOST': 'elmer-01.db.elephantsql.com',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}'''
+
+import dj_database_url
+DATABASES = {'default': dj_database_url.config()}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
